@@ -135,13 +135,13 @@ bet365_close_min = (pd.to_datetime(df["Bet365_ML_Close_Time"]) - start).dt.total
 ## Said plainly
 
 - **The file starts with the 2019 season, on 20 March 2019 in Tokyo; Pinnacle starts with the 2020 season**, on 69% of the 2020 games.
-- **Extra innings count in every market**, as US books settle them. **232 games of 2020 and 2021 were 7-inning doubleheader games**: `Scheduled_Innings` says so, and their totals are lower.
+- **Extra innings count in every market**, as US books settle them. **232 games of 2020 and 2021 were scheduled for 7 innings** (228 doubleheader games, and 4 games played the day a suspended game was finished): `Scheduled_Innings` says so, and their totals are lower.
 - **The run line is ±1.5 for every book.** Pinnacle often lists ±1 as its main handicap: its ±1.5 line is taken from its other lines.
 - **An opening price is the book's first price posted at most 15 days before the first pitch.** In 2019, FanDuel and DraftKings have an opening moneyline on 2% and 7% of the games.
 - **BetRivers' prices come from market snapshots.** BetRivers, Fanatics and Hard Rock have few closing prices in 2025: their record that season is market snapshots, mostly stamped after the first pitch, in-game prices that were not used. In 2026, Fanatics has opening prices on 43% of the games but few closing prices; Hard Rock and BetRivers close on about one game in ten.
-- **From 31 August to 12 September 2026, Pinnacle and the US books other than Bet365 are missing on most games**: 7 of the 173 games of those days have a Pinnacle closing moneyline.
-- **In 2026, Pinnacle's closing total is often an older price**: 590 of its 1,874 closing totals of 2026 were recorded more than 3 hours before the first pitch. Its moneyline and run line close a minute or two before.
-- **Kalshi and Polymarket: moneyline only**, from 25 March 2026. Their closing prices are identical in 1,021 of the 2,007 games where both have one.
+- **From 31 August to 12 September 2026, Pinnacle and the nine US books are missing on most games**: 7 of the 173 games of those days have a Pinnacle closing moneyline, against 172 for Bet365.
+- **In 2026, Pinnacle's closing total is often an older price**: 590 of its 1,874 closing totals of 2026 were recorded more than 3 hours before the first pitch. Its moneyline and run line still close less than a minute before the first pitch (median).
+- **Kalshi and Polymarket: moneyline only**, from 25 March 2026. Their closing prices are identical in 1,020 of the 2,005 games where both have one.
 - **Team totals come from Pinnacle only**, 1 April 2021 to 31 August 2026.
 - **No spring training, no All-Star Game, no player props, no first-five or inning lines, no live odds, no futures.** One opening and one closing price per book and market, not every move in between. Every recorded move (timestamped odds), other books or another scope: built to order on request.
 
@@ -162,7 +162,7 @@ printed PASS or FAIL, all but what the file cannot show (the counts of prices le
 |---|---|---|
 | Games | 26 | 18,242 |
 | Seasons | 2019 to 2026 | 2019 to 2026, through the World Series (28 Oct 2026) |
-| Prices | 1,634 | 1,530,594 |
+| Prices | 1,634 | 1,530,552 |
 | Columns | 294 | 294 |
 | Files | 1 CSV + README | 1 CSV + README |
 
