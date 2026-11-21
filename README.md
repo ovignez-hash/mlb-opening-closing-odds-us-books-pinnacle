@@ -162,7 +162,7 @@ printed PASS or FAIL, all but what the file cannot show (the counts of prices le
 |---|---|---|
 | Games | 26 | 18,242 |
 | Seasons | 2019 to 2026 | 2019 to 2026, through the World Series (28 Oct 2026) |
-| Prices | 1,634 | 1,530,552 |
+| Prices | 1,634 | 1,530,548 |
 | Columns | 294 | 294 |
 | Files | 1 CSV + README | 1 CSV + README |
 
