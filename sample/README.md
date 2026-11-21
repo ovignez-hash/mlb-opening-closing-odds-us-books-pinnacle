@@ -25,7 +25,7 @@ Every season from 2019 to 2026: 21 regular season · 5 World Series games (2019,
 | 2 Aug 2020 | Cincinnati Reds @ Detroit Tigers | Regular season | 4–3 (7 inn.) | 4 | 1 | The first 7-inning doubleheader game, 2020. |
 | 16 Sep 2020 | San Francisco Giants @ Seattle Mariners | Regular season | 9–3 | 8 | 5 | A Seattle home game played at San Francisco's Oracle Park. |
 | 27 Oct 2020 | Tampa Bay Rays @ Los Angeles Dodgers | World Series | 1–3 | 8 | 1 | World Series 2020, game 6, at Globe Life Field in Texas: the Los Angeles Dodgers, designated home team, win 3-1. |
-| 1 Apr 2021 | Minnesota Twins @ Milwaukee Brewers | Regular season | 5–6 (10 inn.) | 8 | 6 | Opening day 2021: Pinnacle's team totals start; Milwaukee wins in the 10th inning. |
+| 1 Apr 2021 | Minnesota Twins @ Milwaukee Brewers | Regular season | 5–6 (10 inn.) | 8 | 6 | Opening day 2021: Pinnacle's first closing team totals; Milwaukee wins in the 10th inning. |
 | 7 Jul 2021 | Milwaukee Brewers @ New York Mets | Regular season | 3–4 (8 inn.) | 7 | 7 | A 7-inning doubleheader game that went to the 8th inning: New York Mets 4, Milwaukee 3. |
 | 12 Aug 2021 | New York Yankees @ Chicago White Sox | Regular season | 8–9 | 7 | 7 | Field of Dreams, Iowa: Chicago White Sox 9, New York Yankees 8. |
 | 5 Nov 2022 | Philadelphia Phillies @ Houston Astros | World Series | 1–4 | 8 | 3 | World Series 2022, game 6: Houston 4, Philadelphia 1. |
@@ -58,7 +58,7 @@ For every book and every market, the opening price and the closing price where t
 | Books | Pinnacle · Bet365 · FanDuel · DraftKings · BetMGM · Caesars · BetRivers · BetOnline · theScore · Fanatics · Hard Rock |
 | Prediction markets | Kalshi · Polymarket (moneyline only) |
 | Markets | Moneyline · Run line (±1.5) · Total · Team totals (Pinnacle) |
-| Prices | 1,530,594 |
+| Prices | 1,530,552 (each side of a market counts once) |
 | Columns | 294 |
 | File | `MLB_Opening_Closing_Odds_2019-2026.csv` (UTF-8, comma-separated) |
 
@@ -75,11 +75,11 @@ For every book and every market, the opening price and the closing price where t
 | 2025 | 2,430 | 47 | 2,477 |
 | 2026 | 2,429 | 40 | 2,469 |
 
-The game list, the scores, the innings, the doubleheaders, the ballparks, the probable pitchers and the scheduled first-pitch times follow MLB's official schedule, game by game. The 2020 regular season had 60 games per team. Postponed games appear once, on the day they were played (363 games); a game suspended and finished on a later day appears once, at its original first pitch (30 games).
+The game list, the scores, the innings, the doubleheaders, the ballparks, the probable pitchers and the scheduled first-pitch times follow MLB's official schedule, game by game. The 2020 regular season was cut to 60 games per team (58 for the Detroit Tigers and the St. Louis Cardinals). Postponed games appear once, on the day they were played (363 games); a game suspended and finished on a later day appears once, at its original first pitch (30 games).
 
 - **Extra innings**: 1,588 games. **Shortened** (called before the scheduled innings, rain mostly, official result): 40 games.
-- **Seven-inning games**: in 2020 and 2021 both games of a doubleheader were scheduled for 7 innings (111 games in 2020, 121 in 2021). `Scheduled_Innings` says so; their totals are lower (mean closing total 6.75, against 8.74 for the 9-inning games of the same two seasons).
-- **Doubleheaders**: 672 games. Game 2 of a traditional doubleheader has no start time of its own in the official schedule: it starts about 30 minutes after game 1 ends. For these 161 games, `Kickoff_UTC` is the start time posted by the sportsbooks (160 games), or the schedule's time when none was posted (1).
+- **Seven-inning games**: 232 games of 2020 and 2021 were scheduled for 7 innings (111 in 2020, 121 in 2021): both games of a doubleheader from August 2020 and in 2021 (228 games), and 4 games played the day a suspended game was finished. `Scheduled_Innings` says so; their totals are lower (mean closing total 6.75, against 8.74 for the 9-inning games of the same two seasons).
+- **Doubleheaders**: 672 games. Game 2 of a traditional doubleheader has no start time of its own in the official schedule: it starts about 30 minutes after game 1 ends. For these 161 games, `Kickoff_UTC` is the start time posted by the sportsbooks (160 games), or the schedule's time when none was posted (1). 4 games are a game 1 whose game 2 was postponed again, to a later day.
 - **Neutral sites**: 107 games were not played at the home team's park of that season: 22 international games (London, Monterrey, Mexico City, Tokyo, Seoul), 13 special-event games in the US (the Little League Classic in Williamsport, Field of Dreams, Rickwood Field, Bristol, Omaha), the 35 games of the 2020 postseason played in neutral parks from the Division Series to the World Series, and 37 games moved to another park (28 of them in 2020). Home and away follow MLB's designation.
 
 ## Columns
@@ -101,7 +101,7 @@ The game list, the scores, the innings, the doubleheaders, the ballparks, the pr
 | `Neutral_Site` | `Yes` when the game was not played at the home team's park of that season, otherwise `No` |
 | `Doubleheader` | `Yes` or `No` |
 | `Game_Number` | `1`, or `2` for the second game of a doubleheader |
-| `Scheduled_Innings` | `9`, or `7` for the doubleheaders of 2020 and 2021 |
+| `Scheduled_Innings` | `9`, or `7` for the seven-inning games of 2020 and 2021 (doubleheaders, and games played the day a suspended game was finished) |
 | `Innings_Played` | innings played, extra innings included |
 | `Home_Probable_Pitcher`, `Away_Probable_Pitcher` | the probable starting pitchers of the official schedule (23 games have one missing) |
 | `Home_Score`, `Away_Score` | official final score, extra innings included |
@@ -147,7 +147,7 @@ The same four with `Away` for the away team.
 
 **Extra innings count**, in the scores and in every market, as US books settle them.
 
-**The `Spread` columns are the run line, ±1.5 for every book.** `Spread_Home_Line` at `-1.5` means the home team must win by 2 runs or more; `1.5` means it covers unless it loses by 2 runs or more. The away team's line is the opposite. Pinnacle often lists ±1 as its main handicap: its ±1.5 line is taken from its other lines, the same side as its favourite. A run line other than ±1.5 was not used (3,443 prices).
+**The `Spread` columns are the run line, ±1.5 for every book.** `Spread_Home_Line` at `-1.5` means the home team must win by 2 runs or more; `1.5` means it covers unless it loses by 2 runs or more. The away team's line is the opposite. Pinnacle often lists ±1 as its main handicap: its ±1.5 line is then taken from its alternative lines, the -1.5 going to the team favoured on that main handicap. A run line other than ±1.5 was not used (3,443 run lines).
 
 **The total line is in runs**, the same for over and under.
 
@@ -155,7 +155,7 @@ The same four with `Away` for the away team.
 
 **Kalshi and Polymarket are prediction markets.** Their prices are written as American odds. When the source gives no American price, the price is the cost of buying each side (the ask), converted to American odds.
 
-**One time per book, market and phase.** The `_Time` columns are ISO 8601 in UTC and give the moment the price was recorded. Most closing prices of Pinnacle and the US books are recorded at the same second for all of them, a few minutes before the first pitch. Some come from snapshots of the market: all of FanDuel's and DraftKings' in 2019, most of BetRivers', and some of the other US books' later. In all, snapshots give FanDuel 22%, DraftKings 24%, BetMGM 11%, Caesars 10%, BetRivers 97% of their markets. Their time is the book's last price update seen in the snapshot, which can be hours before the first pitch when the book did not move. Bet365 is recorded at every change, to the second. The table counts, per season, the games where at least one moneyline, run line or total closing price of the book is stamped more than 15 minutes before the scheduled first pitch:
+**One time per book, market and phase.** The `_Time` columns are ISO 8601 in UTC and give the moment the price was recorded. From 2020, most closing prices of the US books are recorded at the same second for all of them, a few minutes before the first pitch; Pinnacle and Bet365 close closer to it (median times below). Some come from snapshots of the market: all of FanDuel's and DraftKings' in 2019, most of BetRivers', and some of the other US books' later. In all, snapshots give FanDuel 22%, DraftKings 24%, BetMGM 11%, Caesars 10%, BetRivers 97% of their markets. Their time is the book's last price update seen in the snapshot, which can be hours before the first pitch when the book did not move. Bet365 is recorded at every change, to the second. The table counts, per season, the games where at least one moneyline, run line or total closing price of the book is stamped more than 15 minutes before the scheduled first pitch:
 
 | Season | Pinnacle | Bet365 | FanDuel | DraftKings | BetMGM | Caesars | BetRivers | BetOnline | theScore | Fanatics | Hard Rock |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -168,13 +168,13 @@ The same four with `Away` for the away team.
 | 2025 | 35 | 87 | 38 | 29 | 59 | 52 | 495 | 28 | 47 | 81 | 269 |
 | 2026 | 1,050 | 80 | 365 | 376 | 73 | 330 | 62 | 329 | 81 | 1 | 66 |
 
-**The opening price is the first price recorded for the game, posted at most 15 days before the first pitch** (14 openings older than that left empty). For a postponed game, prices posted for the original date were not used (803 prices): the game was taken off the board and lined again for its new date.
+**The opening price is the first price recorded for the game, posted at most 15 days before the first pitch** (14 openings older than that left empty). For a postponed game, prices posted for the original date were not used (803 openings and closings): the game was taken off the board and lined again for its new date.
 
 **The closing price is the last pre-game price.** `Kickoff_UTC` is the scheduled first pitch. Median closing time on the moneyline, against the scheduled first pitch: Pinnacle 1 min before, Bet365 1 min before, FanDuel 9 min before, DraftKings 9 min before, BetMGM 9 min before, Caesars 9 min before, BetRivers 45 min before, BetOnline 6 min before, theScore 9 min before, Fanatics 120 min before, Hard Rock 4 min before, Kalshi 4 min before, Polymarket 4 min before. No closing price is older than 12 hours before the scheduled first pitch, and none is stamped more than 5 minutes after it. In the market snapshots, a book's last update stamped after the scheduled first pitch is an in-game price: none of these 106,620 updates was used. In 2019, a snapshot update stamped in the last 6 minutes before the scheduled first pitch strays from the market about one time in four (against none from 6 minutes before, and none in later seasons): these 2,002 updates were not used either.
 
-**Closing prices were checked against the market at the first pitch.** A closing price was compared with the median of the other books' closing prices recorded from one hour before the first pitch to 5 minutes after it, on the same game, and left out when it was more than 0.05 away in no-vig implied probability on the moneyline, more than 0.08 away on the run line (against the books on the same side of the line), or 1.5 runs or more away on the total. When fewer than three other books were there at the first pitch (mostly in 2019), the check used every other closing price of the game: when two or more of them agreed (within 0.03 on the moneyline, 0.05 on the run line, half a run on the total), a price more than 0.06, 0.12 or 1.5 runs away from them was left out. A closing moneyline with the two teams swapped was left out (17). When a book's first source failed that check and its other source passed it, the other source was used, opening price included (14 markets); otherwise the closing price was left out (870 prices). Bet365 prices whose two teams were swapped in the record were left out on 4 games (moneyline and run line).
+**Closing prices were checked against the market at the first pitch.** A closing price was compared with the median of the other books' closing prices recorded from one hour before the first pitch to 5 minutes after it, on the same game, and left out when it was more than 0.05 away in no-vig implied probability on the moneyline, more than 0.08 away on the run line (against the books on the same side of the line), or 1.5 runs or more away on the total. When fewer than three other books were there at the first pitch (mostly in 2019), the check used every other closing price of the game: when two or more of them agreed (within 0.03 on the moneyline, 0.05 on the run line, half a run on the total), a price more than 0.06, 0.12 or 1.5 runs away from them was left out. A closing moneyline with the two teams swapped was left out (17). When a book's first source failed that check and its other source passed it, the other source was used, opening price included (14 markets); otherwise the closing price was left out (861 closings). The check was then run again on the prices kept, one price at a time, until none failed it (10 more closings left out). When the market could not be read at all (fewer than three other books at the first pitch, and no two other closing prices agreeing), a closing moneyline more than 0.10 away from every other closing moneyline of the game and more than 0.15 away from the median of the other books' opening and closing moneylines was left out, with the book's run line recorded at the same moment (2 games). Bet365 prices whose two teams were swapped in the record were left out on 4 games (moneyline and run line).
 
-**Opening prices were checked against the openings posted at the same time.** An opening price is compared only with the other books' openings posted within 12 hours of it, because a change of starting pitcher moves the line. It was left out (71 prices) when it was more than 0.15 away from them in no-vig implied probability on the moneyline or the run line, or 1.5 runs or more away on the total, unless it already matched the market at the close. It was also left out when it was more than 0.30 away from the market at the close on the moneyline or the run line, or 2 runs or more on the total (160 prices).
+**Opening prices were checked against the openings posted at the same time.** An opening price is compared only with the other books' openings posted within 12 hours of it, because a change of starting pitcher moves the line. It was left out (71 openings) when it was more than 0.15 away from them in no-vig implied probability on the moneyline or the run line, or 1.5 runs or more away on the total, unless it already matched the market at the close. It was also left out when it was more than 0.30 away from the market at the close on the moneyline or the run line, or 2 runs or more on the total (159 openings).
 
 ## Coverage
 
@@ -242,7 +242,7 @@ Share of games with the price, in %, rounded down (`–` means none, `0` means l
 | 2022 | 99 | 99 | 94 | 92 | 86 | 90 | 0 | 90 | – | – | – |
 | 2023 | 99 | 99 | 93 | 95 | 88 | 91 | 0 | 93 | – | – | – |
 | 2024 | 100 | 99 | 97 | 89 | 87 | 91 | 0 | 93 | 91 | – | – |
-| 2025 | 99 | 98 | 98 | 94 | 88 | 90 | 0 | 94 | 92 | 2 | – |
+| 2025 | 99 | 98 | 98 | 93 | 88 | 90 | 0 | 94 | 92 | 2 | – |
 | 2026 | 91 | 99 | 93 | 89 | 85 | 90 | 13 | 88 | 90 | 44 | 14 |
 
 **Opening total**
@@ -273,16 +273,16 @@ Share of games with the price, in %, rounded down (`–` means none, `0` means l
 
 - **The file starts with the 2019 season**, on 20 March 2019, and ends with the 2026 World Series.
 - **Pinnacle starts with the 2020 season**, from the first day of that season (23 July 2020), on 69% of the 2020 games. Its team totals run from 1 April 2021 to 31 August 2026: none in 2020, none after 31 August 2026. 198 team totals were left out: their sum was more than 1.5 runs away from the game total, or the other team had none.
-- **In 2026, Pinnacle's closing total is often an older price**: on 590 of the 1,874 2026 games with one, it was recorded more than 3 hours before the first pitch (against 2 games in 2025). Its line is the median closing line of the other books in 463 of the 541 of those games where three or more other books have one. Its moneyline and run line close a minute or two before the first pitch, as in the other seasons.
+- **In 2026, Pinnacle's closing total is often an older price**: on 590 of the 1,874 2026 games with one, it was recorded more than 3 hours before the first pitch (against 2 games in 2025). Its line is the median closing line of the other books in 463 of the 541 of those games where three or more other books have one. Its moneyline and run line still close less than a minute before the first pitch (median), as in the other seasons.
 - **Bet365 covers every season from 2019.** Its moneyline closes a median 1 minute before the first pitch.
-- **2019 has three books: Bet365, FanDuel and DraftKings** (and BetRivers on 16% of the games). FanDuel has a closing moneyline on 68% of the 2019 games and DraftKings on 79%, after the late snapshot updates of 2019 were set aside. Their opening prices are rare that season.
+- **2019 has four books: Bet365, FanDuel, DraftKings, and BetRivers from 29 August 2019** (on 16% of the games). FanDuel has a closing moneyline on 68% of the 2019 games and DraftKings on 79%, after the late snapshot updates of 2019 were set aside. Their opening prices are rare that season.
 - **BetMGM, Caesars and BetOnline start with the 2020 season**, theScore on 20 March 2024.
 - **BetRivers' prices come from market snapshots**, closing a median 45 minutes before the first pitch.
-- **The 2025 season has few closing prices for BetRivers, Fanatics and Hard Rock** (613, 103 and 330, moneyline, run line and total together): their record that season is market snapshots, mostly stamped after the first pitch, in-game prices that were not used. In 2026, Fanatics has opening prices on 43% of the games but few closing prices, and Hard Rock and BetRivers close on about one game in ten.
-- **Kalshi and Polymarket carry closing prices from 25 March 2026**, the first day of the 2026 season. Their closing prices are identical in 1,021 of the 2,007 games where both have one.
-- **From 31 August to 12 September 2026, Pinnacle and the US books other than Bet365 are missing on most games**: 7 of the 173 games of those days have a Pinnacle closing moneyline, against 172 for Bet365. Their record holds no snapshots for those days.
-- **When the opening record is the closing record itself (same moment), it appears once, as the closing price** (19,927 cases). An opening price equal to the closing price at a different time is kept: the book did not move. No opening price is stamped after the scheduled first pitch. A book's opening and closing prices in a market always come from the same source. 17,300 markets have an opening price and no closing price.
-- **Prices that cannot exist were not used**: moneylines with less than 1.5% margin (the two sides were not taken at the same moment) or more than 25%, closing moneylines with more than 10% margin, run line, total and team total prices adding up to less than 100% or more than 115%, run line prices beyond ±500, total and team total prices beyond ±300, prediction-market prices whose two sides do not add up, and lines out of range. 38 run lines giving the -1.5 to the moneyline underdog were removed. 18 totals posted for 9 innings on 7-inning games were removed.
+- **The 2025 season has few closing prices for BetRivers, Fanatics and Hard Rock** (613, 103 and 330 closings, moneyline, run line and total together): their record that season is market snapshots, mostly stamped after the first pitch, in-game prices that were not used. In 2026, Fanatics has opening prices on 43% of the games but few closing prices, and Hard Rock and BetRivers close on about one game in ten.
+- **Kalshi and Polymarket carry closing prices from 25 March 2026**, the first day of the 2026 season. Their closing prices are identical in 1,020 of the 2,005 games where both have one.
+- **From 31 August to 12 September 2026, Pinnacle and the nine US books are missing on most games**: 7 of the 173 games of those days have a Pinnacle closing moneyline, against 172 for Bet365, 7 for Kalshi and 7 for Polymarket. Their record holds no snapshots for those days.
+- **When the opening record is the closing record itself (same moment), it appears once, as the closing price** (19,925 cases). An opening price equal to the closing price at a different time is kept: the book did not move. No opening price is stamped after the scheduled first pitch. A book's opening and closing prices in a market always come from the same source. 17,305 markets have an opening price and no closing price.
+- **Prices that cannot exist were not used**: sportsbook moneylines with less than 1.5% margin (the two sides were not taken at the same moment) or more than 25%, or beyond ±1000 (an in-game price of another game), closing moneylines with more than 10% margin, run line, total and team total prices adding up to less than 101% or more than 115%, run line prices beyond ±500, total and team total prices beyond ±300, Kalshi and Polymarket moneylines adding up to less than 98% or more than 110%, and lines out of range. 44 run lines giving the -1.5 to a team that the moneyline rates under 42% in no-vig probability were removed (the same book's moneyline of the same phase, or the market's when the book had none at that moment); in closer games the -1.5 can go to either team. 18 totals posted for 9 innings on 7-inning games were removed.
 - **6 games have no price at all**: Oakland Athletics at Detroit Tigers on 19 May 2019, Kansas City Royals at Chicago White Sox on 27 May 2019, St. Louis Cardinals at New York Mets on 13 June 2019, Kansas City Royals at Boston Red Sox on 7 August 2019, Baltimore Orioles at Miami Marlins on 5 August 2020, Baltimore Orioles at Washington Nationals on 9 August 2020.
 
 ## Quick start
@@ -302,7 +302,8 @@ p = df.Pinnacle_ML_Home_Close.dropna().map(prob)
 move = df.DraftKings_Total_Line_Close - df.DraftKings_Total_Line_Open
 
 # did the home team cover Bet365's closing run line?
-cover = (df.Home_Score - df.Away_Score + df.Bet365_Spread_Home_Line_Close) > 0
+line = df.Bet365_Spread_Home_Line_Close
+cover = (df.Home_Score - df.Away_Score + line).gt(0).where(line.notna())
 
 # 9-inning games only
 nine = df[df.Scheduled_Innings == 9]
